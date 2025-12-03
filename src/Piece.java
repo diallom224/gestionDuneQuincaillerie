@@ -8,7 +8,12 @@ public abstract class Piece {
     //Le constructeur 
     public Piece(String nom,String reference){
         this.nom = nom;
-        this.reference = reference;
+        if(reference.charAt(0)=='0'){
+            this.reference = "0"+reference;
+        }else{
+            this.reference = "00"+reference;
+        }
+        
     }
 
    @Override
@@ -31,7 +36,7 @@ public abstract class Piece {
 
     public abstract int dureeGarantieDeBase();
 
-    public abstract int dureefabrication();
+    public abstract int dureeFabrication();
 
     
 }
