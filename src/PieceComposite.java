@@ -1,6 +1,6 @@
-
-
 import java.util.ArrayList;
+
+
 
 public abstract class PieceComposite extends Piece {
     protected ArrayList<Piece> liste; 
@@ -16,12 +16,27 @@ public abstract class PieceComposite extends Piece {
     
     @Override 
     public double prix() { 
-        return 0; 
+        double totalPrix = 0.0;
+        for(Piece p : liste){
+            totalPrix += p.prix();
+        }
+        return totalPrix; 
     }
     
     @Override 
     public int dureeGarantie() { 
-        return 0; 
+        if(liste.isEmpty())return 0;
+
+        int garantieMin = Integer.MAX_VALUE;
+
+        for(Piece p : liste){
+
+            int dg = p.dureeGarantie();
+
+            if(dg < garantieMin)garantieMin = dg;
+        }
+
+        return garantieMin;                                                                                                                              
     }
     
     @Override 

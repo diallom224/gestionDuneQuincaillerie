@@ -14,6 +14,35 @@ public class quincaillerie {
         disqueJante.affiche();
         System.out.println("===================== rayon =================================");
         rayon.affiche();
-    }
 
+
+        System.out.println("=================== affichage d'une piece composite en kit ============================");
+        PieceCompositeEnKit janteKit = new PieceCompositeEnKit("jante en kit", "14541", 10);
+        janteKit.ajoute(disqueJante);
+        janteKit.ajoute(rayon);
+        janteKit.ajoute(rayon);
+        janteKit.ajoute(rayon);
+
+        PieceCompositeEnKit roueBrouetteKit = new PieceCompositeEnKit("roue de brouette en kit", "11512", 15);
+        roueBrouetteKit.ajoute(pneu);
+        roueBrouetteKit.ajoute(chambreAir);
+        roueBrouetteKit.ajoute(janteKit);
+
+        janteKit.affiche();
+
+
+        System.out.println("=================== affichage d'une piece composite Montee ============================");
+
+        // ✅ Création d’une pièce composite montée
+        PieceCompositeMontee roueBrouetteMontee =
+                new PieceCompositeMontee("roue de brouette montée", "99887", 25, 8.0);
+
+        // On ajoute les mêmes pièces que pour la version en kit
+        roueBrouetteMontee.ajoute(pneu);
+        roueBrouetteMontee.ajoute(chambreAir);
+        roueBrouetteMontee.ajoute(janteKit);  // la jante montée dans la roue
+
+        // Affichage complet
+        roueBrouetteMontee.affiche();
+    }
 }
